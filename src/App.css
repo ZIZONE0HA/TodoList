@@ -1,0 +1,21 @@
+.App{
+  display: flex;
+  flex-direction: column;
+  /* display:flex 일 때만 설정가능 */
+  gap: 10px; 
+
+  width: 400px;
+  margin: 0 auto;
+}
+
+
+.Header > h1 {
+  color: cornflowerblue;
+}
+
+
+.Editer{
+  display: flex;
+  gap: 10px;
+}
+

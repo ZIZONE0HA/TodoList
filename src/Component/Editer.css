@@ -1,0 +1,27 @@
+.Editer{
+    display: flex;
+    gap: 10px;
+}
+
+.Editer input{
+    /* flex: 1; : 부모요소의 최대크기를 벗어나지 않는 선에서 최대크기로 늘어남 */
+    flex: 1;
+    padding: 15px;
+    border: 1px solid rgb(220,220,220);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.Editer input:focus{
+    outline: none;
+    border: 2px solid cornflowerblue;
+
+}
+
+.Editer button{
+    cursor: pointer;
+    width: 80px;
+    border: none;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 5px;
+}
