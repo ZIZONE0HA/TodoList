@@ -9,13 +9,3 @@
 }
 
 
-.Header > h1 {
-  color: cornflowerblue;
-}
-
-
-.Editer{
-  display: flex;
-  gap: 10px;
-}
-
