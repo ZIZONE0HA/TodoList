@@ -33,6 +33,7 @@ function reducer(state, action){
       item.id !== action.targetId);
     default : return state;
   }
+  
 }
 
 
