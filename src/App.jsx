@@ -1,4 +1,4 @@
-import { useRef, useState, useReducer, act } from 'react'
+import { useRef, useState, useReducer, act, useCallback } from 'react'
 import './App.css'
 import Editer from './Component/Editer'
 import Header from './Component/Header'
@@ -54,19 +54,19 @@ function App() {
     });
   }
 
-  const onUpdate = (targetId) =>{
+  const onUpdate = useCallback((targetId)=>{
     dispatch({
       type:"UPDATE",
       targetId: targetId,
     });
-  }
-
-  const onDelete = (targetId) =>{
+  },[]);
+  
+  const onDelete = useCallback((targetId)=>{
     dispatch({
       type: "DELETE",
       targetId: targetId,
     });
-  }
+  },[]);
 
   return (
   <div className='App'>

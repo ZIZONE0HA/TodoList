@@ -1,4 +1,5 @@
 import './TodoItem.css'
+import { memo } from 'react';
 import classNames from 'classnames';
 
 const TodoItem = ({id,isDone,content,date,onUpdate, onDelete})=>{
@@ -23,4 +24,4 @@ const TodoItem = ({id,isDone,content,date,onUpdate, onDelete})=>{
     );
 }
 
-export default TodoItem;
+export default memo(TodoItem);
