@@ -10,10 +10,34 @@
     width : 20px;
 }
 
+.TodoItem .contentbox{
+    display: flex;
+    flex:1;
+    position: relative;
+}
+.TodoItem .contentbox::after{
+    content:'';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    background-color: grey;
+    display: none;
+}
+
+.TodoItem .contentbox.done::after{
+    display: block;
+    color: grey;
+}
+
 .TodoItem .content{
     flex:1;
 }
-
+.TodoItem .contentbox.done .content{
+    color:grey;
+}
 .TodoItem .date{
     font-size: 14px;
     color: gray;
@@ -21,15 +45,9 @@
 
 .TodoItem button{
     border: none;
-    
     font-size: 14px;
-
     padding: 5px;
     cursor: pointer;
     border-radius: 5px;
 }
 
-.done{
-    text-decoration: line-through;
-    color: grey;
-}
