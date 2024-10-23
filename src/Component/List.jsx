@@ -1,7 +1,10 @@
-import { useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import './List.css'
 import TodoItem from './TodoItem';
-const List = ({todos,onUpdate, onDelete}) =>{
+import { TodoContext } from '../App';
+const List = () =>{
+
+    const {todos} = useContext(TodoContext);
 
     const [search, setSearch] = useState('');
 
@@ -42,9 +45,7 @@ const List = ({todos,onUpdate, onDelete}) =>{
             ></input>
             <div className="Todo_wapper">
                 {filteredData.map((todo)=>
-                <TodoItem key={todo.id} {...todo} 
-                onUpdate={onUpdate}
-                onDelete={onDelete}/>)}
+                <TodoItem key={todo.id} {...todo} />)}
                 
             </div>
         </div>

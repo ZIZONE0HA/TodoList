@@ -1,9 +1,9 @@
-import { useRef, useState, useReducer, act, useCallback } from 'react'
+import { useRef, useState, useReducer, act, useCallback, createContext } from 'react'
 import './App.css'
 import Editer from './Component/Editer'
 import Header from './Component/Header'
 import List from './Component/List'
-// import Example from './Component/Example'
+
 
 const mockData = [
   {
@@ -36,6 +36,8 @@ function reducer (state,action) {
       return state;
       }
 }
+
+export const TodoContext = createContext();
 
 function App() {
   const [todos, dispatch] = useReducer(reducer,mockData);
@@ -71,8 +73,10 @@ function App() {
   return (
   <div className='App'>
     <Header />
-    <Editer onCreate={onCreate}/>
-    <List onUpdate={onUpdate} onDelete={onDelete} todos={todos}/>
+    <TodoContext.Provider value={{todos, onCreate, onUpdate, onDelete}}>
+      <Editer/>
+      <List/>
+    </TodoContext.Provider>
   </div>
   )
 }
