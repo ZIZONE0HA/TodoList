@@ -21,7 +21,7 @@ const TodoItem = ({id,isDone,content,date})=>{
             <span className="custom-checkbox" onClick={onChangeCheckbox}></span>
             <div className={classNames('contentbox',classNames({done:isDone}))}>
                 <div className='content'>{content}</div>
-                <div className='date'>{new Date(date).toLocaleTimeString()}</div>
+                <div className='date'>{new Date(date).toLocaleTimeString('en-US')}</div>
             </div>
             <button onClick={onClickButton}>X</button>
         </div>

@@ -81,11 +81,15 @@ const List = () =>{
             <DeleteAllModal open={isModalOpen} onClose={closeModal} onConfirm={confirmDeleteAll}/>
 
             <div className="todo-wapper">
-                {filteredData.length === 0 ? (
+                {todos.length === 0 ? (
                     <div className='epmty-message'>
                         <CalendarCheck className="calendar-icon"/>
-                        새로운 일정을 추가해 보세요!
+                        Try adding a new Todo!
                     </div>    
+                ) : filteredData.length ===0 ? (
+                    <div className='epmty-message'>
+                        👻 There is no search result
+                    </div>
                 ) : (
                         filteredData.map((todo)=>
                 <TodoItem key={todo.id} {...todo} />))}

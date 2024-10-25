@@ -10,15 +10,14 @@
 /* PC */
 @media (min-width: 1024px) {
   .App {
-    max-width: 700px;
+    max-width: 600px;
   }
 }
 
 /* 태블릿 */
 @media (min-width: 768px) and (max-width: 1023px) {
   .App {
-    max-width: 600px;
+    max-width: 500px;
   }
 }
-
 
