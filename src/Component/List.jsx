@@ -2,7 +2,6 @@ import { useCallback, useContext, useMemo, useState } from 'react';
 import './List.css'
 import TodoItem from './TodoItem';
 import { TodoDipatchContext, TodoStateContext } from '../App';
-import { CalendarCheck } from 'react-bootstrap-icons';
 import classNames from 'classnames';
 import DeleteAllModal from './DeleteAllModal';
 
@@ -58,6 +57,7 @@ const List = () =>{
         closeModal();
     },[onDeleteAll]);
 
+    
     return(
         <div className="List">
             <div className='count'>
@@ -81,16 +81,19 @@ const List = () =>{
             <DeleteAllModal open={isModalOpen} onClose={closeModal} onConfirm={confirmDeleteAll}/>
 
             <div className="todo-wapper">
+                {/* todo가 없을 때 */}
                 {todos.length === 0 ? (
                     <div className='epmty-message'>
-                        <CalendarCheck className="calendar-icon"/>
-                        Try adding a new Todo!
+                        👾 Try adding a new Todo!
                     </div>    
+
+                    // 필터링 된 데이터가 없을 때
                 ) : filteredData.length ===0 ? (
                     <div className='epmty-message'>
                         👻 There is no search result
                     </div>
                 ) : (
+                    // 필터링된 데이터 있을 때
                         filteredData.map((todo)=>
                 <TodoItem key={todo.id} {...todo} />))}
             </div>
