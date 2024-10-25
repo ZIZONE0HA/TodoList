@@ -12,21 +12,36 @@
 }
 
 .List .count .count-item{
-    margin-right: 30px;
+    margin-right: 10px;
     flex: 1;
     position: relative;
+    cursor: pointer;
+    padding: 5px 0;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    transition: border-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.List .count .count-item::after{
+.List .count .count-item.active{
+    border: 2px solid #D54AFE;
+    border-radius: 20px;
+    box-shadow: 0 0 12px #D54AFE; 
+
+}
+
+/* .List .count .count-item::after{
     content: '';
     position: absolute;
     right: -15px; 
     top: 0;
     bottom: 0;
     width: 1px;
-    /* background-color: #86D72F;  */
     background-color: #D54AFE; 
-}
+} */
 
 .List .count .count-item:last-child{
     margin-right: 0;
@@ -37,7 +52,7 @@
 }
 
 .List .count .count-item span{
-    margin-left: 5px;
+    margin-left: 15px;
     font-size: 22px;
     font-weight: 700;
 }
@@ -58,7 +73,7 @@
 
 .List >input:focus{
     outline: none;
-    box-shadow: 0 2px 12px #86D72F;
+    box-shadow: 0 4px 8px #86D72F;
 }
 .List >input::placeholder{
     color: #86D72F; 
@@ -73,9 +88,28 @@
     box-shadow: 0 0px 12px #86D72F;
     border-radius: 10px;
     padding: 15px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
-.List .epmty_message{
+/* 스크롤바 */
+.List .todo-wapper::-webkit-scrollbar {
+    width: 5px; 
+}
+
+.List .todo-wapper::-webkit-scrollbar-track {
+    background: #021202; 
+    border-radius: 15px;
+
+}
+
+.List .todo-wapper::-webkit-scrollbar-thumb {
+    background:  #86D72F; 
+    border-radius: 15px; 
+    cursor: pointer;
+}
+
+.List .epmty-message{
     text-align: center;
     color: #ffffff;
     margin: 20px 0;
@@ -85,6 +119,6 @@
     align-items: center; 
 }
 
-.List .epmty_message .calendar-icon{
+.List .epmty-message .calendar-icon{
     margin-right: 10px;
 }
