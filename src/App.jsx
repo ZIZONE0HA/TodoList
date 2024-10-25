@@ -32,7 +32,9 @@ function reducer (state,action) {
         return state.map((item)=>item.id === action.targetId? {...item, isDone:!item.isDone}: item);
     case "DELETE" : 
       return state.filter((item)=>item.id !== action.targetId);
-    default :
+    case "DELETE_ALL" : 
+      return [];
+      default :
       return state;
       }
 }
@@ -72,9 +74,15 @@ function App() {
     });
   },[]);
 
+  const onDeleteAll = useCallback(()=>{
+    dispatch({
+      type: "DELETE_ALL"
+    });
+  },[])
+
 
   const memoizedDispatch = useMemo(()=>{
-    return { onCreate, onUpdate, onDelete};
+    return { onCreate, onUpdate, onDelete, onDeleteAll};
   },[]);
 
   return (

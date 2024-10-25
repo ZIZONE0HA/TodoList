@@ -1,7 +1,7 @@
 import { useContext, useMemo, useState } from 'react';
 import './List.css'
 import TodoItem from './TodoItem';
-import { TodoStateContext } from '../App';
+import { TodoDipatchContext, TodoStateContext } from '../App';
 import { CalendarCheck } from 'react-bootstrap-icons';
 import classNames from 'classnames';
 
@@ -9,6 +9,7 @@ import classNames from 'classnames';
 const List = () =>{
 
     const todos = useContext(TodoStateContext);
+    const {onDeleteAll} = useContext(TodoDipatchContext);
 
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState('all');
@@ -47,23 +48,34 @@ const List = () =>{
     },[todos]); 
 
 
+    //전체삭제 모달
+    const handleDeleteAll = () =>{
+        const confirmed = window.confirm("정말 모든 일정을 삭제하시겠습니까?");
+        if(confirmed){
+            onDeleteAll();
+        }
+    }
+
     return(
         <div className="List">
             <div className='count'>
                 <div className= {classNames('count-item all',{active:filter ==='all'})}
                 onClick={()=>setFilter('all')}>
-                    🔥To do <span>{totalCount} </span> </div>
+                    🔥 To do <span>{totalCount} </span> </div>
                 <div className= {classNames('count-item done',{active:filter ==='done'})}
                 onClick={()=>setFilter('done')}>
-                    👌Finish <span>{doneCount} </span> </div>
+                    👌 Finish <span>{doneCount} </span> </div>
                 <div className={classNames('count-item notDone',{active:filter ==='notDone'})}
                 onClick={()=>setFilter('notDone')}>
-                    👏Rest <span>{notDoneCount} </span> </div>
+                    👏 Rest <span>{notDoneCount} </span> </div>
             </div>
+
             <input value={search}
             placeholder='Search'
             onChange={onChangeSearch}
             ></input>
+
+            <button className='deleteAll' onClick={handleDeleteAll}>Delete All</button>
             <div className="todo-wapper">
                 {filteredData.length === 0 ? (
                     <div className='epmty-message'>
