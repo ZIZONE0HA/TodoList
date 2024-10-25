@@ -1,0 +1,64 @@
+/* 모달 배경 */
+.modal-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+/* 모달 내용 */
+.modal-content {
+    background-color: #021202;
+    color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+/* 모달 버튼 컨테이너 */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* 취소 버튼 */
+.modal-actions .cancel {
+    background-color: #444;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-actions .cancel:hover {
+    background-color: #666;
+}
+
+/* 삭제 버튼 */
+.modal-actions .confirm {
+    background-color: #D54AFE;
+    color: #021202;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-actions .confirm:hover {
+    background-color: #a830d0;
+}

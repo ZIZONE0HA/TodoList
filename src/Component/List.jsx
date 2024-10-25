@@ -1,9 +1,10 @@
-import { useContext, useMemo, useState } from 'react';
+import { useCallback, useContext, useMemo, useState } from 'react';
 import './List.css'
 import TodoItem from './TodoItem';
 import { TodoDipatchContext, TodoStateContext } from '../App';
 import { CalendarCheck } from 'react-bootstrap-icons';
 import classNames from 'classnames';
+import DeleteAllModal from './DeleteAllModal';
 
 
 const List = () =>{
@@ -13,7 +14,7 @@ const List = () =>{
 
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState('all');
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const onChangeSearch=(e)=>{
         setSearch(e.target.value);
@@ -49,12 +50,13 @@ const List = () =>{
 
 
     //전체삭제 모달
-    const handleDeleteAll = () =>{
-        const confirmed = window.confirm("정말 모든 일정을 삭제하시겠습니까?");
-        if(confirmed){
-            onDeleteAll();
-        }
-    }
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+    
+    const confirmDeleteAll = useCallback(()=>{
+        onDeleteAll();
+        closeModal();
+    },[onDeleteAll]);
 
     return(
         <div className="List">
@@ -75,7 +77,9 @@ const List = () =>{
             onChange={onChangeSearch}
             ></input>
 
-            <button className='deleteAll' onClick={handleDeleteAll}>Delete All</button>
+            <button className='deleteAll' onClick={openModal}>Delete All</button>
+            <DeleteAllModal open={isModalOpen} onClose={closeModal} onConfirm={confirmDeleteAll}/>
+
             <div className="todo-wapper">
                 {filteredData.length === 0 ? (
                     <div className='epmty-message'>
