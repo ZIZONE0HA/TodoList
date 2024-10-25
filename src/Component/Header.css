@@ -1,3 +1,9 @@
 .Header > h1 {
-    color: cornflowerblue;
+    color: #86D72F;
+    text-shadow: 4px 4px 6px #D54AFE;
+}
+
+.Header > h3 {
+    color: #D54AFE;
+    text-shadow: 2px 2px 6px #D54AFE;
 }

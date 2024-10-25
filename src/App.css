@@ -1,11 +1,24 @@
 .App{
   display: flex;
   flex-direction: column;
-  /* display:flex 일 때만 설정가능 */
   gap: 10px; 
-
-  width: 400px;
+  max-width: 400px;
   margin: 0 auto;
+  padding: 30px;
+}
+
+/* PC */
+@media (min-width: 1024px) {
+  .App {
+    max-width: 700px;
+  }
+}
+
+/* 태블릿 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .App {
+    max-width: 600px;
+  }
 }
 
 

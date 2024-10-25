@@ -1,10 +1,10 @@
 import { useContext, useRef, useState } from 'react';
 import './Editer.css'
-import { TodoContext } from '../App';
+import { TodoDipatchContext } from '../App';
 
 const Editer = () =>{
 
-    const {onCreate} = useContext(TodoContext);
+    const {onCreate} = useContext(TodoDipatchContext);
 
     const [content,setContent] = useState('');
 
@@ -36,7 +36,7 @@ const Editer = () =>{
             onChange={onChangeContent}
             onKeyDown={onKeyDown}
             ></input>
-            <button onClick={onSubmit}>추가</button>
+            <button onClick={onSubmit}>Add</button>
         </div>
     );
 }

@@ -7,21 +7,30 @@
     /* flex: 1; : 부모요소의 최대크기를 벗어나지 않는 선에서 최대크기로 늘어남 */
     flex: 1;
     padding: 15px;
-    border: 1px solid rgb(220,220,220);
+    border: 1px solid #86D72F;
     border-radius: 5px;
-    box-sizing: border-box;
+    background-color: #021202 ;
+    color: #86D72F;
+    font-size: 18px;
 }
 .Editer input:focus{
     outline: none;
-    border: 2px solid cornflowerblue;
-
+    box-shadow: 0 0 12px #86D72F;
+}
+.Editer input::placeholder {
+    color: #86D72F; 
+    opacity: 0.8; 
 }
 
 .Editer button{
     cursor: pointer;
+    font-size: 18px;
     width: 80px;
     border: none;
-    background-color: cornflowerblue;
-    color: white;
+    background-color: #86D72F;
+    box-shadow: 0 0 12px #86D72F;
+    text-shadow: 0px 0px 1px #021202;
+    color: #021202;
+    font-weight: 700;
     border-radius: 5px;
 }

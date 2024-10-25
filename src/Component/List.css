@@ -4,20 +4,87 @@
     gap:20px;
 }
 
+.List .count{
+    color: #ffffff;
+    font-size: 18px;
+    display: flex;
+    margin: 25px 0 20px;
+}
+
+.List .count .count-item{
+    margin-right: 30px;
+    flex: 1;
+    position: relative;
+}
+
+.List .count .count-item::after{
+    content: '';
+    position: absolute;
+    right: -15px; 
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    /* background-color: #86D72F;  */
+    background-color: #D54AFE; 
+}
+
+.List .count .count-item:last-child{
+    margin-right: 0;
+}
+
+.List .count .count-item:last-child::after {
+    display: none;
+}
+
+.List .count .count-item span{
+    margin-left: 5px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
 .List >input{
     width: 100%;
+    box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid rgb(220,220,220);
-    padding: 15px 0;
+    font-size: 17px;
+    border-bottom: 1px solid #86D72F;
+    padding: 15px;
+    background-color: #021202;
+    color :#86D72F;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .List >input:focus{
     outline: none;
-    border-bottom: 2px solid cornflowerblue;
+    box-shadow: 0 2px 12px #86D72F;
+}
+.List >input::placeholder{
+    color: #86D72F; 
+    opacity: 0.8;
 }
 
-.List .Todo_wapper{
+.List .todo-wapper{
     display: flex;
     flex-direction: column;
     gap:20px;
+    border: 1px solid #86D72F;
+    box-shadow: 0 0px 12px #86D72F;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.List .epmty_message{
+    text-align: center;
+    color: #ffffff;
+    margin: 20px 0;
+    font-size: 16px;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+
+.List .epmty_message .calendar-icon{
+    margin-right: 10px;
 }

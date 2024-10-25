@@ -1,10 +1,13 @@
 import { useContext, useMemo, useState } from 'react';
 import './List.css'
 import TodoItem from './TodoItem';
-import { TodoContext } from '../App';
+import { TodoStateContext } from '../App';
+import { CalendarCheck } from 'react-bootstrap-icons';
+
+
 const List = () =>{
 
-    const {todos} = useContext(TodoContext);
+    const todos = useContext(TodoStateContext);
 
     const [search, setSearch] = useState('');
 
@@ -33,20 +36,24 @@ const List = () =>{
 
     return(
         <div className="List">
-            <h4>Todo List 👽</h4>
-            <div>
-                <div>오늘의 할 일 : {totalCount}</div>
-                <div>끝낸 일 : {doneCount}</div>
-                <div>남은 일 : {notDoneCount}</div>
+            <div className='count'>
+                <div className='count-item'>🔥 To do <span>{totalCount}</span> </div>
+                <div className='count-item'>👌 Finish <span>{doneCount}</span> </div>
+                <div className='count-item'>👏 Rest <span>{notDoneCount}</span> </div>
             </div>
             <input value={search}
-            placeholder='검색'
+            placeholder='Search'
             onChange={onChangeSearch}
             ></input>
-            <div className="Todo_wapper">
-                {filteredData.map((todo)=>
-                <TodoItem key={todo.id} {...todo} />)}
-                
+            <div className="todo-wapper">
+                {filteredData.length === 0 ? (
+                    <div className='epmty_message'>
+                        <CalendarCheck className="calendar-icon"/>
+                        새로운 일정을 추가해 보세요!
+                    </div>    
+                ) : (
+                        filteredData.map((todo)=>
+                <TodoItem key={todo.id} {...todo} />))}
             </div>
         </div>
     );

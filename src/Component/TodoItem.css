@@ -3,18 +3,59 @@
     gap: 20px;
     align-items: center;
     padding-bottom: 20px;
-    border-bottom: 1px solid rgb(220, 220, 220);
+    border-bottom: 1px solid #86D72F;
+    color : #ffffff;
+
 }
 
 .TodoItem input[type="checkbox"]{
-    width : 20px;
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
 }
+
+.TodoItem .custom-checkbox {
+    width: 20px;
+    height: 18px;
+    background-color: #021202; 
+    border: 2px solid #86D72F; 
+    /* box-shadow: 0px 0px 5px #86D72F; */
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+/* 체크된 상태에서의 스타일 */
+.TodoItem input[type="checkbox"]:checked + .custom-checkbox {
+    border-color: #D54AFE;
+    box-shadow: 0px 0px 5px #D54AFE;
+}
+
+.TodoItem input[type="checkbox"]:checked + .custom-checkbox::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: -3px;
+    width: 7px;
+    height: 12px;
+    border: 2px solid #D54AFE;
+    border-width: 0 5px 5px 0;
+    transform: rotate(45deg);
+}
+
 
 .TodoItem .contentbox{
     display: flex;
-    flex:1;
+    width: 100%;
+    gap:20px;
     position: relative;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }
+
 .TodoItem .contentbox::after{
     content:'';
     position: absolute;
@@ -23,7 +64,7 @@
     top: 50%;
     transform: translateY(-50%);
     height: 1px;
-    background-color: grey;
+    background-color: #D54AFE;
     display: none;
 }
 
@@ -34,6 +75,7 @@
 
 .TodoItem .content{
     flex:1;
+    font-size: 17px;
 }
 .TodoItem .contentbox.done .content{
     color:grey;
@@ -45,9 +87,13 @@
 
 .TodoItem button{
     border: none;
-    font-size: 14px;
-    padding: 5px;
+    padding: 5px 8px;
+    box-sizing: border-box;
     cursor: pointer;
     border-radius: 5px;
+    background-color: #D54AFE;
+    box-shadow: 0 0 12px #D54AFE;
+    text-shadow: 0px 0px 1px #021202;
+    color: #021202;
 }
 
