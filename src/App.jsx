@@ -64,6 +64,7 @@ function App() {
     idRef.current = maxId +1;
 
     console.log(maxId);
+
     dispatch({
       type:"INIT",
       data:parsedData
