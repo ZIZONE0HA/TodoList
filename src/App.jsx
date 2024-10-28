@@ -1,42 +1,37 @@
-import { useRef, useState, useReducer, act, useCallback, createContext, useMemo } from 'react'
+import { useRef, useState, useReducer, act, useCallback, createContext, useMemo, useEffect } from 'react'
 import './App.css'
 import Editer from './Component/Editer'
 import Header from './Component/Header'
 import List from './Component/List'
 
 
-const mockData = [
-  {
-    id:0,
-    isDone: false,
-    content:"스트레칭",
-    date : new Date().getTime(),
-  },{
-    id:1,
-    isDone: false,
-    content:"영양제 먹기",
-    date : new Date().getTime(),
-  },{
-    id:2,
-    isDone: false,
-    content:"물 1.5L 마시기",
-    date : new Date().getTime(),
-  }
-];
+
+
 
 function reducer (state,action) {
+  let nextStage;
+
   switch(action.type){
+    case "INIT":
+      return action.data;
     case "CREATE" :
-      return [action.data, ...state];
+      nextStage = [action.data, ...state];
+      break;
     case "UPDATE" : 
-        return state.map((item)=>item.id === action.targetId? {...item, isDone:!item.isDone}: item);
+      nextStage= state.map((item)=>item.id === action.targetId? {...item, isDone:!item.isDone}: item);
+      break;
     case "DELETE" : 
-      return state.filter((item)=>item.id !== action.targetId);
+      nextStage = state.filter((item)=>item.id !== action.targetId);
+      break;
     case "DELETE_ALL" : 
-      return [];
-      default :
+      nextStage = [];
+      break;
+    default :
       return state;
-      }
+  }
+
+  localStorage.setItem("todos",JSON.stringify(nextStage));
+  return nextStage;
 }
 
 export const TodoStateContext = createContext();
@@ -44,9 +39,36 @@ export const TodoDipatchContext = createContext();
 
 
 function App() {
-  const [todos, dispatch] = useReducer(reducer,mockData);
+  const [todos, dispatch] = useReducer(reducer,[]);
+  const idRef = useRef(0);
 
-  const idRef = useRef(3);
+  useEffect(()=>{
+    const storedData = localStorage.getItem("todos");
+    if(!storedData){
+      return;
+    }
+
+    const parsedData = JSON.parse(storedData);
+
+    if(!Array.isArray(parsedData)){
+      return;
+    }
+    
+    let maxId = 0;
+    parsedData.forEach((item)=>{
+      if(Number(item.id) > maxId){
+        maxId = Number(item.id)
+      }
+    });
+
+    idRef.current = maxId +1;
+
+    console.log(maxId);
+    dispatch({
+      type:"INIT",
+      data:parsedData
+    });
+  },[])
 
   const onCreate = (content) =>{
     dispatch({
