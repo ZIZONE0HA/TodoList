@@ -19,6 +19,10 @@ input,button{
   font-family: 'NeoDunggeunmoPro-Regular';
 }
 
+button{
+  letter-spacing: 0.03em;
+}
+
 /* PC */
 @media (min-width: 1024px) {
   .App {
