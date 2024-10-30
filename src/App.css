@@ -12,7 +12,11 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 30px;
-  
+  font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+input,button{
+  font-family: 'NeoDunggeunmoPro-Regular';
 }
 
 /* PC */
