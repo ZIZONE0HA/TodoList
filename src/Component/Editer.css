@@ -1,10 +1,11 @@
 .Editer{
     display: flex;
     gap: 10px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .Editer input{
-    /* flex: 1; : 부모요소의 최대크기를 벗어나지 않는 선에서 최대크기로 늘어남 */
     flex: 1;
     padding: 15px;
     border: 1px solid #86D72F;
@@ -12,6 +13,7 @@
     background-color: #021202 ;
     color: #86D72F;
     font-size: 18px;
+    width: 100%;
 }
 .Editer input:focus{
     outline: none;

@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'NeoDunggeunmoPro';
-  src: url('/fonts/NeoDunggeunmoPro-Regular.woff') format('woff');
+  src: url('./fonts/NeoDunggeunmoPro-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  font-family: 'NeoDunggeunmoPro', sans-serif;
+  font-family: 'NeoDunggeunmoPro';
 }
 
 .App{
@@ -38,4 +38,5 @@ body {
     padding: 15px;
     gap: 8px; 
   }
+
 }
