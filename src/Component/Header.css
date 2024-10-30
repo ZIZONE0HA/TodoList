@@ -1,9 +1,13 @@
+.Header{
+    font-family: 'NeoDunggeunmoPro-Regular';
+}
+
 .Header > h1 {
     color: #86D72F;
     text-shadow: 3px 3px 3.5px #D54AFE;
 }
 
-.Header > h3 {
+.Header > h2 {
     color: #D54AFE;
     text-shadow: 2px 2px 6px #D54AFE;
 }
